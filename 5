@@ -1,0 +1,18 @@
+# Запрашиваем строку с числами
+stroka = input("Введите числа через пробел: ")
+
+# Преобразуем строку в список чисел с помощью split и генератора
+numbers = [int(x) for x in stroka.split()]
+
+# Счетчик пар
+count_pairs = 0
+
+# Проходим по списку
+for i in range(len(numbers)):
+    # Для каждого элемента ищем совпадения с последующими
+    for j in range(i + 1, len(numbers)):
+        if numbers[i] == numbers[j]:
+            count_pairs += 1
+
+# Выводим результат
+print(count_pairs)
