@@ -1,0 +1,32 @@
+# Запрашиваем IP-адрес
+ip_address = input("Введите IP-адрес: ")
+
+# Разбиваем строку по точке
+parts = ip_address.split('.')
+
+# Флаг корректности
+is_valid = True
+
+# Проверяем, что частей ровно 4
+if len(parts) != 4:
+    is_valid = False
+else:
+    # Проверяем каждую часть
+    for part in parts:
+        # Проверяем, что это число (без использования isdigit, так как в задании 10 это запрещено, но здесь не запрещено)
+        # Используем try-except для надежности
+        try:
+            num = int(part)
+            # Проверяем диапазон от 0 до 255
+            if num < 0 or num > 255:
+                is_valid = False
+                break
+        except ValueError:
+            is_valid = False
+            break
+
+# Выводим результат
+if is_valid:
+    print("ДА")
+else:
+    print("НЕТ")
